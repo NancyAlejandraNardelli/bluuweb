@@ -10,15 +10,10 @@ app.set('view engine', 'ejs');
 //que van a estar en la carpeta views
 app.set('views', __dirname + '/views');
 
-app.get('/',(req,res)=>{
- //res.send('Mi respuesta desde express')
- res.render('index',{titulo:'Mi título dinámico'})
-})
+//Rutas Web
+app.use('/',require('./router/rutasWeb'))
+app.use('/mascotas',require('./router/mascotas'))
 
-app.get('/servicios',(req,res)=>{
-    //res.send('Bienvenidos a la página de servicios')
-    res.render('servicios',{tituloServicio:'Bienvenidos a la página de servicios'})
-})
 
 app.listen(port,()=>{
     console.log('servidor a su servicio en el puerto', port )
