@@ -1,5 +1,7 @@
 const express=require('express');
 const router=express.Router();
+const {getAnimales} = require('../models/animales');
+
 
 
 router.get('/',(req,res)=>{
@@ -11,5 +13,16 @@ router.get('/',(req,res)=>{
         ]
             
     })
+})
+
+router.get('/animales',async (req,res)=>{
+
+    const arrayMascotas = await getAnimales()
+   
+    res.render('mascotas',{
+        arrayMascotas
+    })
+    
+
 })
 module.exports=router;
